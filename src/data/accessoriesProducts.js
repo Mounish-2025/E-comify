@@ -50,7 +50,7 @@ import handBag from '../assets/Accessories/Handbag.png';
 import silkTie from '../assets/Accessories/Silk-tie.png';
 import leatherGloves from '../assets/Accessories/Leather-gloves.png';
 import backpack from '../assets/Accessories/Backpack.png';
-import ringSet from '../assets/Accessories/ring-set.png';
+import ringSet from '../assets/Accessories/Ring-set.png';
 
 export const newArrivals = [
   {
