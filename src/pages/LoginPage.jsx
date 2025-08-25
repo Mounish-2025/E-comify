@@ -14,7 +14,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  const [fields, setFields] = useState({ username: '', password: '', remember: false });
+  const [fields, setFields] = useState({ username: 'mounish2002', password: '12345', remember: false });
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
