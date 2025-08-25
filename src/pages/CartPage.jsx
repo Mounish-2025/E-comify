@@ -61,12 +61,20 @@ export default function CartPage() {
   return (
     <>
       <Navbar />
-      <Container maxWidth="sm" sx={{ mt: 5, minHeight: "60vh", fontFamily: "'Poppins', sans-serif" }}>
+      <Container
+        maxWidth="sm"
+        sx={{
+          mt: 5,
+          minHeight: "60vh",
+          fontFamily: "'Poppins', sans-serif",
+          px: { xs: 2, sm: 3 },
+        }}
+      >
         <Typography variant="body2" sx={{ color: "#b79da5", mb: 2 }}>
           Home &nbsp;/&nbsp; Shopping Bag
         </Typography>
 
-        <Typography variant="h4" fontWeight={700} sx={{ mb: 4 }}>
+        <Typography variant="h4" fontWeight={700} sx={{ mb: 4, fontSize: { xs: 26, sm: 32 } }}>
           Shopping Bag ({cart.length})
         </Typography>
 
@@ -85,8 +93,10 @@ export default function CartPage() {
                 }}
               />
               <Box sx={{ flex: 1 }}>
-                <Typography fontWeight={500}>{item.title}</Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography fontWeight={500} sx={{ fontSize: { xs: 15, sm: 16 } }}>
+                  {item.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: 13, sm: 14 } }}>
                   Size {item.size}
                 </Typography>
               </Box>
@@ -103,7 +113,7 @@ export default function CartPage() {
                 >
                   <RemoveIcon fontSize="small" />
                 </IconButton>
-                <Typography>{item.quantity}</Typography>
+                <Typography sx={{ fontSize: { xs: 14, sm: 16 } }}>{item.quantity}</Typography>
                 <IconButton
                   onClick={() => changeQuantity(item.id, 1)}
                   sx={{
@@ -121,7 +131,7 @@ export default function CartPage() {
           ))}
         </Stack>
 
-        <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
+        <Typography variant="h6" fontWeight={700} sx={{ mb: 2, fontSize: { xs: 19, sm: 21 } }}>
           Order Summary
         </Typography>
         <Box sx={{ color: "#b79da5", fontWeight: 500, fontSize: 16 }}>
@@ -156,7 +166,7 @@ export default function CartPage() {
             borderRadius: 2,
             px: 5,
             fontWeight: 600,
-            fontSize: 18,
+            fontSize: { xs: 16, sm: 18 },
             bgcolor: "#ea2222",
             '&:hover': { bgcolor: '#d01919' },
             textTransform: 'none',

@@ -8,7 +8,8 @@ import {
   Checkbox,
   FormControlLabel,
   Link,
-  Grid
+  Grid,
+  Paper,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
@@ -39,26 +40,44 @@ const LoginPage = () => {
   };
 
   return (
-    <>
-      <Container maxWidth="sm" sx={{ mt: 8 }}>
+    <Container
+      maxWidth="xs"
+      sx={{
+        mt: { xs: 4, sm: 10 },
+        mb: { xs: 4, sm: 8 },
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: { xs: '85vh', sm: '80vh' },
+        fontFamily: "'Poppins', sans-serif",
+      }}
+    >
+      <Paper
+        elevation={3}
+        sx={{
+          py: { xs: 4, sm: 5 },
+          px: { xs: 2.5, sm: 5 },
+          borderRadius: 4,
+          width: '100%',
+          fontFamily: "'Poppins', sans-serif",
+        }}
+      >
         <Box
           sx={{
-            mt: 8,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'flex-start',
-            fontFamily: "'Poppins', sans-serif",
+            alignItems: 'center',
           }}
         >
           <Typography
             variant="h4"
             sx={{
-              alignSelf: 'center',
-              width: '100%',
-              mb: 4,
               fontWeight: 700,
               textAlign: 'center',
+              mb: { xs: 3, sm: 4 },
               fontFamily: "'Poppins', sans-serif",
+              fontSize: { xs: 28, sm: 32 },
+              width: '100%'
             }}
           >
             Welcome
@@ -97,6 +116,7 @@ const LoginPage = () => {
                   name="remember"
                   checked={fields.remember}
                   onChange={handleChange}
+                  size="small"
                 />
               }
               label="Remember me"
@@ -107,7 +127,7 @@ const LoginPage = () => {
               }}
             />
             {error && (
-              <Typography sx={{ color: 'red', mt: 0.5, mb: 0.5, fontFamily: "'Poppins', sans-serif" }}>
+              <Typography sx={{ color: 'red', mt: 0.5, mb: 0.5, fontFamily: "'Poppins', sans-serif", fontSize: 15 }}>
                 {error}
               </Typography>
             )}
@@ -123,12 +143,12 @@ const LoginPage = () => {
                 '&:hover': { bgcolor: '#d01919' },
                 borderRadius: 2,
                 fontFamily: "'Poppins', sans-serif",
-                fontSize: '1rem'
+                fontSize: { xs: '0.96rem', sm: '1rem' },
+                py: 1.1
               }}
             >
               Sign In
             </Button>
-            {/* Stack the links side by side and center them */}
             <Grid container justifyContent="center" spacing={4} sx={{ mt: 2 }}>
               <Grid item>
                 <Link href="#" variant="body2" underline="hover" sx={{ fontFamily: "'Poppins', sans-serif" }}>
@@ -143,8 +163,8 @@ const LoginPage = () => {
             </Grid>
           </Box>
         </Box>
-      </Container>
-    </>
+      </Paper>
+    </Container>
   );
 };
 

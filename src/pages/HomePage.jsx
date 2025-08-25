@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Box, Typography, Button, Stack, Paper } from '@mui/material';
+import { Container, Box, Typography, Button, Grid, Paper } from '@mui/material';
 import Navbar from '../components/Navbar';
 import ProductCard from '../components/ProductCard';
 import Footer from '../components/Footer';
@@ -20,7 +20,7 @@ const HomePage = () => {
   return (
     <>
       <Navbar />
-      <Container maxWidth="md" sx={{ mt: 5, fontFamily: "'Poppins', sans-serif" }}>
+      <Container maxWidth="lg" sx={{ mt: 5, fontFamily: "'Poppins', sans-serif" }}>
         {/* Hero Section */}
         <Paper
           sx={{
@@ -30,16 +30,28 @@ const HomePage = () => {
             backgroundImage: `url(${backimg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            minHeight: { xs: 220, md: 330 },
+            minHeight: { xs: 200, sm: 260, md: 320 },
             display: 'flex',
             alignItems: 'center',
+            position: 'relative',
           }}
         >
-          <Box sx={{ ml: 6, color: '#440f0fff', maxWidth: 400 }}>
-            <Typography variant="h3" fontWeight={700} sx={{ mb: 2 }}>
+          <Box
+            sx={{
+              position: 'relative',
+              pl: { xs: 3, sm: 6 },
+              py: { xs: 2, sm: 5 },
+              color: '#440f0fff',
+              maxWidth: { xs: 260, sm: 400 },
+              bgcolor: { xs: 'rgba(255,255,255,0.82)', sm: 'transparent' },
+              borderRadius: 3,
+              m: { xs: 2, sm: 0 }
+            }}
+          >
+            <Typography variant="h4" fontWeight={700} sx={{ mb: 2, fontSize: { xs: 26, sm: 33, md: 40 } }}>
               Elevate Your Style
             </Typography>
-            <Typography variant="h6" sx={{ mb: 3 }} fontWeight={500}>
+            <Typography variant="h6" sx={{ mb: 3, fontWeight: 500, fontSize: { xs: 15, sm: 18 } }}>
               Discover the latest trends and timeless classics to express your unique personality.
             </Typography>
             <Button
@@ -50,6 +62,7 @@ const HomePage = () => {
                 py: 1,
                 fontWeight: 600,
                 borderRadius: 2,
+                fontSize: { xs: 14, sm: 16 },
                 '&:hover': { bgcolor: '#d01919' }
               }}
             >
@@ -59,43 +72,42 @@ const HomePage = () => {
         </Paper>
 
         {/* Featured Products */}
-        <Typography variant="h5" fontWeight={700} sx={{ mb: 2 }}>
+        <Typography variant="h5" fontWeight={700} sx={{ mb: 2, fontSize: { xs: 19, sm: 24 } }}>
           Featured Products
         </Typography>
-        <Stack direction="row" spacing={3} sx={{ mb: 6 }}>
+        <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ mb: 6 }}>
           {featuredProducts.map((item, idx) => (
-            <Box
-              key={idx}
-              onClick={() => handleFeaturedClick(item.title)}
-              sx={{ cursor: 'pointer' }}
-            >
+            <Grid item key={idx} xs={12} sm={6} md={4} lg={3} onClick={() => handleFeaturedClick(item.title)}
+              sx={{ cursor: 'pointer', display: 'flex', justifyContent: 'center' }}>
               <ProductCard title={item.title} image={item.image} />
-            </Box>
+            </Grid>
           ))}
-        </Stack>
+        </Grid>
 
         {/* New Arrivals */}
-        <Typography variant="h5" fontWeight={700} sx={{ mb: 2 }}>
+        <Typography variant="h5" fontWeight={700} sx={{ mb: 2, fontSize: { xs: 19, sm: 24 } }}>
           New Arrivals
         </Typography>
-        <Stack direction="row" spacing={3} sx={{ mb: 8 }}>
+        <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ mb: 8 }}>
           {newArrivals.map((item, idx) => (
-            <ProductCard key={idx} title={item.title} image={item.image} />
+            <Grid item key={idx} xs={12} sm={6} md={4} lg={3} sx={{ display: 'flex', justifyContent: 'center' }}>
+              <ProductCard title={item.title} image={item.image} />
+            </Grid>
           ))}
-        </Stack>
+        </Grid>
 
         {/* Community Signup Section */}
         <Paper elevation={0} sx={{
           background: '#fafafa',
           borderRadius: 4,
           textAlign: 'center',
-          p: 5,
+          p: { xs: 3, sm: 5 },
           mb: 10
         }}>
-          <Typography variant="h5" fontWeight={700} sx={{ mb: 1 }}>
+          <Typography variant="h5" fontWeight={700} sx={{ mb: 1, fontSize: { xs: 19, sm: 24 } }}>
             Join Our Community
           </Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+          <Typography variant="body1" color="text.secondary" sx={{ mb: 3, fontSize: { xs: 15, sm: 16 } }}>
             Stay updated on the latest trends, exclusive offers, and style tips.
           </Typography>
           <Button
@@ -105,6 +117,7 @@ const HomePage = () => {
               fontWeight: 600,
               borderRadius: 2,
               px: 4,
+              fontSize: { xs: 14, sm: 16 },
               '&:hover': { bgcolor: '#d01919' }
             }}
           >

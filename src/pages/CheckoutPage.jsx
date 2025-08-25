@@ -10,17 +10,16 @@ import {
   RadioGroup,
   FormControlLabel,
   Divider,
-  Stack,
   Avatar,
   FormControl,
   Breadcrumbs,
-  Link
+  Link,
 } from "@mui/material";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
-import polo from '../assets/Men/Polo-tshirt.png';
-import shoes from '../assets/Men/Leather-boots.png';
+import polo from "../assets/Men/Polo-tshirt.png";
+import shoes from "../assets/Men/Leather-boots.png";
 
 // Dummy review cart items for preview
 const reviewItems = [
@@ -69,31 +68,55 @@ export default function CheckoutPage() {
     navigate("/order-confirmation");
   };
 
-
   return (
     <>
       <Navbar />
-      <Container maxWidth="sm" sx={{ mt: 5, mb: 10, fontFamily: "'Poppins', sans-serif" }}>
+      <Container
+        maxWidth="sm"
+        sx={{
+          mt: 5,
+          mb: 10,
+          fontFamily: "'Poppins', sans-serif",
+          px: { xs: 2, sm: 3 },
+        }}
+      >
         {/* Breadcrumbs */}
-        <Breadcrumbs sx={{ mb: 3 }}>
+        <Breadcrumbs sx={{ mb: 3 }} separator="›">
           <Link
             color="inherit"
             underline="hover"
             href="/cart"
-            onClick={e => { e.preventDefault(); navigate("/cart"); }}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/cart");
+            }}
+            sx={{ fontFamily: "'Poppins', sans-serif" }}
           >
             Bag
           </Link>
-          <Typography color="text.primary">Checkout</Typography>
+          <Typography
+            color="text.primary"
+            sx={{ fontFamily: "'Poppins', sans-serif" }}
+          >
+            Checkout
+          </Typography>
         </Breadcrumbs>
 
-        <Typography variant="h5" fontWeight={700} sx={{ mb: 3 }}>
+        <Typography
+          variant="h5"
+          fontWeight={700}
+          sx={{ mb: 3, fontSize: { xs: 26, sm: 30 } }}
+        >
           Checkout
         </Typography>
 
         <form onSubmit={handlePlaceOrder} autoComplete="off">
           {/* Shipping address */}
-          <Typography variant="h6" fontWeight={600} sx={{ mt: 1, mb: 2 }}>
+          <Typography
+            variant="h6"
+            fontWeight={600}
+            sx={{ mt: 1, mb: 2, fontSize: { xs: 20, sm: 22 } }}
+          >
             Shipping address
           </Typography>
           <TextField
@@ -103,7 +126,7 @@ export default function CheckoutPage() {
             size="small"
             margin="normal"
             value={shipping.fullName}
-            onChange={e => setShipping({ ...shipping, fullName: e.target.value })}
+            onChange={(e) => setShipping({ ...shipping, fullName: e.target.value })}
           />
           <TextField
             label="Address"
@@ -112,7 +135,7 @@ export default function CheckoutPage() {
             size="small"
             margin="normal"
             value={shipping.address}
-            onChange={e => setShipping({ ...shipping, address: e.target.value })}
+            onChange={(e) => setShipping({ ...shipping, address: e.target.value })}
           />
           <TextField
             label="Apt, suite, etc. (optional)"
@@ -121,7 +144,7 @@ export default function CheckoutPage() {
             size="small"
             margin="normal"
             value={shipping.apt}
-            onChange={e => setShipping({ ...shipping, apt: e.target.value })}
+            onChange={(e) => setShipping({ ...shipping, apt: e.target.value })}
           />
           <Grid container spacing={2}>
             <Grid item xs={6}>
@@ -132,7 +155,7 @@ export default function CheckoutPage() {
                 size="small"
                 margin="normal"
                 value={shipping.city}
-                onChange={e => setShipping({ ...shipping, city: e.target.value })}
+                onChange={(e) => setShipping({ ...shipping, city: e.target.value })}
               />
             </Grid>
             <Grid item xs={6}>
@@ -143,7 +166,7 @@ export default function CheckoutPage() {
                 size="small"
                 margin="normal"
                 value={shipping.state}
-                onChange={e => setShipping({ ...shipping, state: e.target.value })}
+                onChange={(e) => setShipping({ ...shipping, state: e.target.value })}
               />
             </Grid>
           </Grid>
@@ -156,7 +179,7 @@ export default function CheckoutPage() {
                 size="small"
                 margin="normal"
                 value={shipping.zip}
-                onChange={e => setShipping({ ...shipping, zip: e.target.value })}
+                onChange={(e) => setShipping({ ...shipping, zip: e.target.value })}
               />
             </Grid>
             <Grid item xs={6}>
@@ -167,20 +190,26 @@ export default function CheckoutPage() {
                 size="small"
                 margin="normal"
                 value={shipping.phone}
-                onChange={e => setShipping({ ...shipping, phone: e.target.value })}
+                onChange={(e) => setShipping({ ...shipping, phone: e.target.value })}
               />
             </Grid>
           </Grid>
 
           {/* Payment */}
-          <Typography variant="h6" fontWeight={600} sx={{ mt: 3, mb: 2 }}>
+          <Typography
+            variant="h6"
+            fontWeight={600}
+            sx={{ mt: 3, mb: 2, fontSize: { xs: 20, sm: 22 } }}
+          >
             Payment
           </Typography>
           <FormControl component="fieldset" sx={{ mb: 2 }}>
             <RadioGroup
               value={paymentMethod}
-              onChange={e => setPaymentMethod(e.target.value)}
+              onChange={(e) => setPaymentMethod(e.target.value)}
               row
+              aria-label="payment method"
+              name="paymentMethod"
             >
               <FormControlLabel value="card" control={<Radio />} label="Credit card" />
               <FormControlLabel value="paypal" control={<Radio />} label="PayPal" />
@@ -195,7 +224,7 @@ export default function CheckoutPage() {
                 size="small"
                 margin="normal"
                 value={card.number}
-                onChange={e => setCard({ ...card, number: e.target.value })}
+                onChange={(e) => setCard({ ...card, number: e.target.value })}
                 sx={{
                   "& input": { color: "#b79da5" },
                 }}
@@ -209,7 +238,7 @@ export default function CheckoutPage() {
                     size="small"
                     margin="normal"
                     value={card.expiry}
-                    onChange={e => setCard({ ...card, expiry: e.target.value })}
+                    onChange={(e) => setCard({ ...card, expiry: e.target.value })}
                   />
                 </Grid>
                 <Grid item xs={6}>
@@ -220,7 +249,7 @@ export default function CheckoutPage() {
                     size="small"
                     margin="normal"
                     value={card.cvv}
-                    onChange={e => setCard({ ...card, cvv: e.target.value })}
+                    onChange={(e) => setCard({ ...card, cvv: e.target.value })}
                   />
                 </Grid>
               </Grid>
@@ -231,12 +260,12 @@ export default function CheckoutPage() {
                 size="small"
                 margin="normal"
                 value={card.name}
-                onChange={e => setCard({ ...card, name: e.target.value })}
+                onChange={(e) => setCard({ ...card, name: e.target.value })}
               />
             </>
           )}
 
-          {/* Review items and summary (single column, left-aligned, matches image) */}
+          {/* Review items and summary */}
           <Box sx={{ mt: 5, ml: 0, maxWidth: 370 }}>
             <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 2 }}>
               Review items
@@ -287,7 +316,9 @@ export default function CheckoutPage() {
               <Divider sx={{ my: 1.3 }} />
               <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
                 <Typography sx={{ fontWeight: 700, color: "#222", fontSize: 16 }}>Total</Typography>
-                <Typography sx={{ fontWeight: 700, color: "#222", fontSize: 16 }}>${total}</Typography>
+                <Typography sx={{ fontWeight: 700, color: "#222", fontSize: 16 }}>
+                  ${total}
+                </Typography>
               </Box>
             </Box>
 
@@ -300,7 +331,7 @@ export default function CheckoutPage() {
               sx={{
                 borderRadius: 2,
                 fontWeight: 600,
-                fontSize: 18,
+                fontSize: { xs: 16, sm: 18 },
                 bgcolor: "#ea2222",
                 "&:hover": { bgcolor: "#d01919" },
                 textTransform: "none",

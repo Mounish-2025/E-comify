@@ -66,13 +66,13 @@ const getAllProducts = (category) => {
 
 const ReviewBar = ({ value, percent }) => (
   <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-    <Typography sx={{ width: 25, textAlign: 'right', mr: 1 }}>{value}</Typography>
+    <Typography sx={{ width: 25, textAlign: 'right', mr: 1, fontSize: { xs: 12, sm: 14 } }}>{value}</Typography>
     <LinearProgress
       variant="determinate"
       value={percent}
       sx={{ flex: 1, height: 8, borderRadius: 5, mr: 1, bgcolor: '#f0eaea' }}
     />
-    <Typography sx={{ minWidth: 32 }}>{percent}%</Typography>
+    <Typography sx={{ minWidth: 32, fontSize: { xs: 12, sm: 14 } }}>{percent}%</Typography>
   </Box>
 );
 
@@ -91,7 +91,7 @@ const ProductDetailsPage = () => {
       <>
         <Navbar />
         <Container sx={{ mt: 5 }}>
-          <Typography variant="h5" color="error">
+          <Typography variant="h5" color="error" sx={{ fontFamily: "'Poppins', sans-serif" }}>
             Product not found.
           </Typography>
         </Container>
@@ -111,7 +111,7 @@ const ProductDetailsPage = () => {
             to="/home"
             underline="hover"
             color="inherit"
-            sx={{ cursor: 'pointer' }}
+            sx={{ cursor: 'pointer', fontSize: { xs: 13, sm: 15 } }}
           >
             Home
           </Link>
@@ -120,11 +120,13 @@ const ProductDetailsPage = () => {
             to={`/${category}`}
             underline="hover"
             color="inherit"
-            sx={{ cursor: 'pointer' }}
+            sx={{ cursor: 'pointer', fontSize: { xs: 13, sm: 15 } }}
           >
             {category.charAt(0).toUpperCase() + category.slice(1)}
           </Link>
-          <Typography color="text.primary">{product.title}</Typography>
+          <Typography color="text.primary" sx={{ fontSize: { xs: 13, sm: 15 } }}>
+            {product.title}
+          </Typography>
         </Breadcrumbs>
 
         {/* Product Images Gallery */}
@@ -140,7 +142,11 @@ const ProductDetailsPage = () => {
             <Grid container spacing={1}>
               {galleryImages.slice(1).map((img, idx) => (
                 <Grid item xs={4} key={idx}>
-                  <img src={img} alt={`${product.title} ${idx + 2}`} style={{ width: '100%', borderRadius: 8 }} />
+                  <img
+                    src={img}
+                    alt={`${product.title} ${idx + 2}`}
+                    style={{ width: '100%', borderRadius: 8 }}
+                  />
                 </Grid>
               ))}
             </Grid>
@@ -148,20 +154,20 @@ const ProductDetailsPage = () => {
 
           {/* Product Information */}
           <Grid item xs={12} sm={5}>
-            <Typography variant="h5" fontWeight={700} gutterBottom>
+            <Typography variant="h5" fontWeight={700} gutterBottom sx={{ fontSize: { xs: 22, sm: 26 } }}>
               {product.title}
             </Typography>
-            <Typography color="text.secondary" sx={{ mb: 2 }}>
+            <Typography color="text.secondary" sx={{ mb: 2, fontSize: { xs: 14, sm: 15 } }}>
               Brand: Trendify
             </Typography>
-            <Typography variant="h6" fontWeight={600} sx={{ mb: 1 }}>
+            <Typography variant="h6" fontWeight={600} sx={{ mb: 1, fontSize: { xs: 20, sm: 22 } }}>
               {product.price}
             </Typography>
-            <Typography sx={{ mb: 2 }}>
+            <Typography sx={{ mb: 2, fontSize: { xs: 14, sm: 15 } }}>
               {product.description ||
                 'This elegant item is made from high-quality materials and designed for comfort and style. Available in multiple sizes.'}
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 3, fontSize: { xs: 13, sm: 15 } }}>
               Available in sizes XS-XL.
             </Typography>
           </Grid>
@@ -169,18 +175,20 @@ const ProductDetailsPage = () => {
 
         {/* Customer Reviews Section */}
         <Box sx={{ mt: 5 }}>
-          <Typography variant="h6" fontWeight={700} gutterBottom>
+          <Typography variant="h6" fontWeight={700} gutterBottom sx={{ fontSize: { xs: 20, sm: 22 } }}>
             Customer Reviews
           </Typography>
 
           {/* Average Rating and Breakdown */}
           <Box sx={{ display: 'flex', alignItems: 'flex-end', mb: 2, mt: 1 }}>
-            <Typography variant="h3" sx={{ mr: 2 }}>
+            <Typography variant="h3" sx={{ mr: 2, fontSize: { xs: 36, sm: 42 } }}>
               4.5
             </Typography>
             <Box>
-              <Rating value={4.5} precision={0.5} readOnly />
-              <Typography color="text.secondary">150 reviews</Typography>
+              <Rating value={4.5} precision={0.5} readOnly size="large" />
+              <Typography color="text.secondary" sx={{ fontSize: { xs: 13, sm: 15 } }}>
+                150 reviews
+              </Typography>
             </Box>
           </Box>
 
@@ -201,19 +209,19 @@ const ProductDetailsPage = () => {
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 0.5 }}>
                   <Avatar sx={{ width: 32, height: 32, mr: 1 }}>{r.name[0]}</Avatar>
                   <Stack>
-                    <Typography fontWeight={500}>{r.name}</Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography fontWeight={500} sx={{ fontSize: { xs: 14, sm: 16 } }}>{r.name}</Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: 12, sm: 14 } }}>
                       {r.date}
                     </Typography>
                   </Stack>
                 </Box>
                 <Rating value={r.rating} readOnly size="small" />
-                <Typography sx={{ my: 1 }}>{r.review}</Typography>
+                <Typography sx={{ my: 1, fontSize: { xs: 14, sm: 15 } }}>{r.review}</Typography>
                 <Stack direction="row" spacing={2}>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: 12, sm: 14 } }}>
                     👍 {r.likes}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: 12, sm: 14 } }}>
                     💬 {r.comments}
                   </Typography>
                 </Stack>

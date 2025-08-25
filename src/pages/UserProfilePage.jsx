@@ -4,7 +4,6 @@ import {
   Typography,
   TextField,
   Box,
-  Divider,
   Button,
   Tabs,
   Tab,
@@ -35,8 +34,20 @@ export default function UserProfilePage() {
   return (
     <>
       <Navbar />
-      <Container maxWidth="md" sx={{ mt: 5, mb: 10, fontFamily: "'Poppins',sans-serif" }}>
-        <Typography variant="h4" fontWeight={700} sx={{ mb: 4 }}>
+      <Container
+        maxWidth="md"
+        sx={{
+          mt: 5,
+          mb: 10,
+          fontFamily: "'Poppins',sans-serif",
+          px: { xs: 2, sm: 3, md: 0 },
+        }}
+      >
+        <Typography
+          variant="h4"
+          fontWeight={700}
+          sx={{ mb: 4, fontSize: { xs: 28, sm: 32, md: 36 } }}
+        >
           My Account
         </Typography>
 
@@ -44,7 +55,11 @@ export default function UserProfilePage() {
         <Box sx={{ borderBottom: 1, borderColor: "#eee", mb: 3 }}>
           <Tabs value={0} TabIndicatorProps={{ style: { background: "#111" } }}>
             <Tab
-              label={<span style={{ fontWeight: 600, color: "#111" }}>Account Details</span>}
+              label={
+                <span style={{ fontWeight: 600, color: "#111" }}>
+                  Account Details
+                </span>
+              }
               disableRipple
               sx={{
                 textTransform: "none",
@@ -59,14 +74,14 @@ export default function UserProfilePage() {
         <Box
           component="form"
           onSubmit={handleSubmit}
-          sx={{ maxWidth: 540, bgcolor: "#fff" }}
+          sx={{ maxWidth: 540, bgcolor: "#fff", mx: "auto" }}
           autoComplete="off"
         >
           {/* Personal Information Section */}
           <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
             Personal Information
           </Typography>
-          
+
           <TextField
             label="Name"
             name="name"

@@ -94,7 +94,7 @@ const ProductListing = ({
       <Navbar />
       <Container maxWidth="lg" sx={{ mt: 5, fontFamily: "'Poppins', sans-serif" }}>
         {/* Breadcrumbs */}
-        <Breadcrumbs separator="/" aria-label="breadcrumb" sx={{ mb: 2 }}>
+        <Breadcrumbs separator="/" aria-label="breadcrumb" sx={{ mb: 3 }}>
           <Link
             color="inherit"
             underline="hover"
@@ -103,17 +103,24 @@ const ProductListing = ({
               e.preventDefault();
               navigate('/home');
             }}
+            sx={{ fontFamily: "'Poppins', sans-serif" }}
           >
             Home
           </Link>
-          <Typography color="text.primary">{breadcrumbSection}</Typography>
+          <Typography color="text.primary" sx={{ fontFamily: "'Poppins', sans-serif" }}>
+            {breadcrumbSection}
+          </Typography>
         </Breadcrumbs>
 
         {/* Heading and description */}
-        <Typography variant="h4" fontWeight={700} sx={{ mb: 1 }}>
+        <Typography variant="h4" fontWeight={700} sx={{ mb: 1, fontSize: { xs: 22, sm: 28, md: 32 } }}>
           {heading}
         </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 3, maxWidth: 540 }}>
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          sx={{ mb: 4, maxWidth: 600, fontSize: { xs: 14, sm: 16 } }}
+        >
           {description}
         </Typography>
 
@@ -124,9 +131,17 @@ const ProductListing = ({
         <Typography variant="h6" fontWeight={600} sx={{ mb: 2, mt: 3 }}>
           Featured Items
         </Typography>
-        <Grid container spacing={3} sx={{ mb: 3 }}>
+        <Grid container spacing={{ xs: 2, sm: 3 }}>
           {featuredItems.map((item) => (
-            <Grid item key={item.id} sx={{ cursor: 'pointer' }}>
+            <Grid
+              item
+              key={item.id}
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+              sx={{ cursor: 'pointer', display: 'flex', justifyContent: 'center' }}
+            >
               <Box onClick={() => navigate(`/${breadcrumbSection.toLowerCase()}/${item.id}`)}>
                 <ProductCard
                   title={item.title}
@@ -147,9 +162,17 @@ const ProductListing = ({
         <Typography variant="h6" fontWeight={600} sx={{ mb: 2, mt: 5 }}>
           New Arrivals
         </Typography>
-        <Grid container spacing={3}>
+        <Grid container spacing={{ xs: 2, sm: 3 }}>
           {newArrivals.map((item) => (
-            <Grid item key={item.id} sx={{ cursor: 'pointer' }}>
+            <Grid
+              item
+              key={item.id}
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+              sx={{ cursor: 'pointer', display: 'flex', justifyContent: 'center' }}
+            >
               <Box onClick={() => navigate(`/${breadcrumbSection.toLowerCase()}/${item.id}`)}>
                 <ProductCard
                   title={item.title}
